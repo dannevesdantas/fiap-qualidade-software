@@ -1,6 +1,7 @@
 package br.com.fiap.api.repository;
 
 import br.com.fiap.api.model.Mensagem;
+import br.com.fiap.api.utils.MensagemHelper;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +11,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.fail;
 
 @SpringBootTest
 @AutoConfigureTestDatabase
 @Transactional
-public class MensagemRepositoryIT {
+class MensagemRepositoryIT {
 
     @Autowired
     private MensagemRepository mensagemRepository;
@@ -23,14 +23,14 @@ public class MensagemRepositoryIT {
     @Test
     void devePermitirCriarTabela() {
         var totalDeRegistros = mensagemRepository.count();
-        assertThat(totalDeRegistros).isGreaterThan(0);
+        assertThat(totalDeRegistros).isPositive();
     }
 
     @Test
     void devePermitirRegistrarMensagem() {
         // Arrange
         var id = UUID.randomUUID();
-        var mensagem = gerarMensagem();
+        var mensagem = MensagemHelper.gerarMensagem();
         mensagem.setId(id);
 
         // Act
@@ -81,10 +81,4 @@ public class MensagemRepositoryIT {
         assertThat(resultadosObtidos).hasSizeGreaterThan(0);
     }
 
-    private Mensagem gerarMensagem() {
-        return Mensagem.builder()
-                .usuario("José")
-                .conteudo("conteúdo da mensagem")
-                .build();
-    }
 }
