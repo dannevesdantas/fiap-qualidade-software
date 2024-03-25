@@ -9,3 +9,15 @@ t
 Dsrc/test/java/br/com/fiap/api/controller/MensagemControllerTest.java,6\1\6171b8bc311549c84af7735e79e1c955178acce7
 e
 5src/main/java/br/com/fiap/api/RestApiApplication.java,6\a\6ab4760c656d48fef82837ce97c0fcd4a39551c3
+g
+7src/test/java/br/com/fiap/api/utils/MensagemHelper.java,1\b\1bf624339c3ea792f817d224385737b588faf73a
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+k
+;src/main/java/br/com/fiap/api/config/ApplicationConfig.java,1\b\1baf0aee98f166ab8caf8d9e89d352c11375f07d
+j
+:src/main/java/br/com/fiap/api/service/MensagemService.java,e\6\e6dc2846363cb0c687cd11a3a1abcecb2ffee6f2
+r
+Bsrc/test/java/br/com/fiap/api/controller/MensagemControllerIT.java,b\3\b3a1f633a551f5f541f993b2c4d57e5a122da25b
+a
+1src/main/java/br/com/fiap/api/model/Mensagem.java,1\e\1ecdcca3dbc25fd15ce435f2206927f9e45d32e1

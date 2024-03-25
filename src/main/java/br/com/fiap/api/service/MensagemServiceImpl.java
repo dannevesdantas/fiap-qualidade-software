@@ -33,7 +33,7 @@ public class MensagemServiceImpl implements MensagemService {
     @Override
     public Mensagem alterarMensagem(UUID id, Mensagem mensagemAtualizada) {
         var mensagem = buscarMensagem(id);
-        if(!mensagem.getId().equals(mensagemAtualizada.getId())) {
+        if (!mensagem.getId().equals(mensagemAtualizada.getId())) {
             throw new MensagemNotFoundException("mensagem atualizada não apresenta o ID correto");
         }
         mensagem.setConteudo(mensagemAtualizada.getConteudo());
