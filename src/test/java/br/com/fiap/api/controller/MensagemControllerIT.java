@@ -2,6 +2,7 @@ package br.com.fiap.api.controller;
 
 import br.com.fiap.api.model.Mensagem;
 import br.com.fiap.api.utils.MensagemHelper;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -11,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.UUID;
 
@@ -21,6 +23,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ActiveProfiles("test")
 @AutoConfigureTestDatabase
 public class MensagemControllerIT {
 
@@ -41,13 +44,12 @@ public class MensagemControllerIT {
             var mensagem = MensagemHelper.gerarMensagem();
 
             given()
+                    .filter(new AllureRestAssured())
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .body(mensagem)
-                    //.log().all()
             .when()
                     .post("/mensagens")
             .then()
-                    //.log().all()
                     .statusCode(HttpStatus.CREATED.value())
                     .body(matchesJsonSchemaInClasspath("schemas/mensagem.schema.json"));
         }
@@ -57,13 +59,12 @@ public class MensagemControllerIT {
             String xmlPayload = "<mensagem><usuario>Ana</usuario><conteudo>Mensagem do Conteudo</conteudo></mensagem>";
 
             given()
+                    .filter(new AllureRestAssured())
                     .contentType(MediaType.APPLICATION_JSON_VALUE)
                     .body(xmlPayload)
-                    //.log().all()
             .when()
                     .post("/mensagens")
             .then()
-                    //.log().all()
                     .statusCode(HttpStatus.BAD_REQUEST.value())
                     .body(matchesJsonSchemaInClasspath("schemas/error.schema.json"))
                     .body("error", equalTo("Bad Request"))
@@ -77,7 +78,9 @@ public class MensagemControllerIT {
         @Test
         void devePermitirBuscarMensagem() {
             var id = "6774c100-c79e-45ed-8fad-1d4d39653952";
-            when()
+            given()
+                    .filter(new AllureRestAssured())
+            .when()
                     .get("/mensagens/{id}", id)
             .then()
                     .statusCode(HttpStatus.OK.value());
@@ -210,7 +213,6 @@ public class MensagemControllerIT {
             .when()
                     .get("/mensagens")
             .then()
-                    .log().all()
                     .statusCode(HttpStatus.OK.value())
                     .body(matchesJsonSchemaInClasspath("schemas/mensagem.page.schema.json"));
         }
@@ -220,7 +222,6 @@ public class MensagemControllerIT {
             when()
                     .get("/mensagens")
             .then()
-                    .log().all()
                     .statusCode(HttpStatus.OK.value())
                     .body(matchesJsonSchemaInClasspath("schemas/mensagem.page.schema.json"));
         }

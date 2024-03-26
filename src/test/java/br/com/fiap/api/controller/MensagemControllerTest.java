@@ -6,6 +6,7 @@ import br.com.fiap.api.service.MensagemService;
 import br.com.fiap.api.utils.MensagemHelper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jdk.jfr.Description;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -102,6 +103,7 @@ public class MensagemControllerTest {
         }
 
         @Test
+        @Description("Valida o cenário de exceção ao efetuar uma busca de mensagem quando o ID não existir")
         void deveGerarExcecao_QuandoBuscarMensagem_IdNaoExiste() throws Exception {
             var id = UUID.fromString("cc40bc30-1e06-44cf-ac35-8b1fd85b4650");
 
@@ -234,7 +236,7 @@ public class MensagemControllerTest {
             mockMvc.perform(get("/mensagens")
                             .param("page", "0")
                             .param("size", "10"))
-                    .andDo(print())
+                    //.andDo(print())
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$.content", not(empty())))
                     .andExpect(jsonPath("$.totalPages").value(1))

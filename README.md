@@ -27,6 +27,34 @@ docker run --name PostgreSQL-Qualidade_Software --env=POSTGRES_DB=backend --env=
 - [H2 Database Engine](https://www.h2database.com/)
 
 ## Testes
+
+### Execução dos Testes
+
+- para executar os testes unitários:
+
+```sh
+mvn test
+```
+
+- para executar os testes integrados:
+
+```sh
+mvn test -P integration-test
+```
+
+- para executar os testes de sistema:
+
+```sh
+mvn test -P system-test
+```
+
+- Allure report:
+
+```
+npm install -g allure
+allure serve target/allure-results
+````
+
 ![image](https://github.com/dannevesdantas/fiap-qualidade-software/assets/5115895/a60e3c53-2753-4ce7-97b6-b54c7000c34a)
 
 ## Code Coverage

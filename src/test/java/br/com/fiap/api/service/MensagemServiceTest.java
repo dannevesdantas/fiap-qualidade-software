@@ -4,6 +4,8 @@ import br.com.fiap.api.exception.MensagemNotFoundException;
 import br.com.fiap.api.model.Mensagem;
 import br.com.fiap.api.repository.MensagemRepository;
 import br.com.fiap.api.utils.MensagemHelper;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -43,6 +45,7 @@ class MensagemServiceTest {
     }
 
     @Test
+    @Severity(SeverityLevel.BLOCKER)
     void devePermitirRegistrarMensagem() {
         // Arrange
         var mensagem = MensagemHelper.gerarMensagem();
@@ -62,6 +65,7 @@ class MensagemServiceTest {
     }
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
     void devePermitirBuscarMensagem() {
         // Arrange
         var id = UUID.fromString("80cc28a9-6551-4f53-bae1-84f8fa5b7bc1");
@@ -78,6 +82,7 @@ class MensagemServiceTest {
     }
 
     @Test
+    @Severity(SeverityLevel.MINOR)
     void deveGerarExcecao_QuandoBuscarMensagem_IdNaoExiste() {
         var id = UUID.fromString("0d2850aa-a42d-41ff-8c18-50b07945d23f");
         when(mensagemRepository.findById(id))

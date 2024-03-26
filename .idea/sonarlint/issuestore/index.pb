@@ -21,3 +21,13 @@ r
 Bsrc/test/java/br/com/fiap/api/controller/MensagemControllerIT.java,b\3\b3a1f633a551f5f541f993b2c4d57e5a122da25b
 a
 1src/main/java/br/com/fiap/api/model/Mensagem.java,1\e\1ecdcca3dbc25fd15ce435f2206927f9e45d32e1
+r
+Bsrc/test/java/br/com/fiap/api/repository/MensagemRepositoryIT.java,d\1\d181d66715dd47abe3fdc358e6958196f8d7046b
+c
+3src/test/java/br/com/fiap/api/bdd/CucumberTest.java,3\e\3e63101e66acc1d3649f26304b2bca8d471d00f4
+e
+5src/test/java/br/com/fiap/api/bdd/StepDefinition.java,b\c\bcfaea625cc6c570ba69814ed9a9d3557650081b
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+n
+>src/test/java/br/com/fiap/api/service/MensagemServiceTest.java,e\a\ea95e3544c70c35a892717fc99dfd990e22f3427
