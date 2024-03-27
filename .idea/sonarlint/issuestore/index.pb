@@ -31,3 +31,12 @@ e
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 n
 >src/test/java/br/com/fiap/api/service/MensagemServiceTest.java,e\a\ea95e3544c70c35a892717fc99dfd990e22f3427
+8
+Makefile,8\3\836efb6e25a091dcb4ff8e1dbb2f0be6a5cbf14c
+:
+
+Dockerfile,6\6\6651ddff6eb82c840ced7c1dddee15c6e1913dd4
+C
+docker-compose.yaml,e\f\ef8def03dc8f162799089e9b5f4321201c8810d5
+t
+Dsrc/test/java/br/com/fiap/api/performance/PerformanceSimulation.java,3\a\3a7e59ffc2a7044d67f9636da109b44656f82ad3
