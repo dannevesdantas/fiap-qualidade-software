@@ -8,12 +8,9 @@ Lições das aulas de Qualidade de Software da [Pós Tech em Software Architectu
 
 ## Executar a aplicação
 
-1. Execute o comando abaixo para iniciar o banco de dados:
-```bash
-docker run --name PostgreSQL-Qualidade_Software --env=POSTGRES_DB=backend --env=POSTGRES_USER=root --env=POSTGRES_PASSWORD=toor --volume=/var/lib/postgresql/data -p 5432:5432 -d postgres:16.1
-```
-3. Execute o comando `mvn spring-boot:run` para iniciar a aplicação;
-4. Acesse http://localhost:8080/mensagens
+1. Execute o comando `mvn package`
+2. Execute o comando `docker compose -f docker-compose.yaml up -d`
+3. Acesse http://localhost:8080/mensagens
 
 ### Frameworks de teste utilizados
 - [JUnit 5](https://junit.org/junit5/)
@@ -21,6 +18,7 @@ docker run --name PostgreSQL-Qualidade_Software --env=POSTGRES_DB=backend --env=
 - [AssertJ](https://joel-costigliola.github.io/assertj/)
 - [Rest Assured](https://rest-assured.io/)
 - [Cucumber](https://cucumber.io/)
+- [Gatling](https://gatling.io/)
 
 ### Banco de dados
 - [PostgreSQL](https://www.postgresql.org/)
@@ -30,35 +28,47 @@ docker run --name PostgreSQL-Qualidade_Software --env=POSTGRES_DB=backend --env=
 
 ### Execução dos Testes
 
-- para executar os testes unitários:
+Para executar os testes unitários:
 
 ```sh
 mvn test
 ```
 
-- para executar os testes integrados:
+Para executar os testes integrados:
 
 ```sh
 mvn test -P integration-test
 ```
 
-- para executar os testes de sistema:
+Para executar os testes de sistema:
 
 ```sh
 mvn test -P system-test
 ```
 
-- Allure report:
+Para exibir o Allure report:
 
 ```
-npm install -g allure
 allure serve target/allure-results
 ````
 
+Para executar os testes de performance:
+
+```sh
+mvn gatling:test -P performance-test
+```
+
+> Você também pode usar o `Makefile`
+
+### Cenários de teste
+
 ![image](https://github.com/dannevesdantas/fiap-qualidade-software/assets/5115895/a60e3c53-2753-4ce7-97b6-b54c7000c34a)
 
-## Code Coverage
+### Code Coverage
 <img width="688" alt="image" src="https://github.com/dannevesdantas/fiap-qualidade-software/assets/5115895/1636aaa3-3b3d-4026-b289-e5c30cd83b52">
+
+### Testes de performance com Gatling
+<img width="868" alt="image" src="https://github.com/dannevesdantas/fiap-qualidade-software/assets/5115895/69ab7752-edef-4fbd-a004-e58afa596ae6">
 
 ## Requisitos
 
